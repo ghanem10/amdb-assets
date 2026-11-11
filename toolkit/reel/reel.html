@@ -1,0 +1,214 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+/*FONTS*/
+:root{--ink:#06182E;--cyan:#1FB6D3;--pearl:#EEF3F6;--silver:#9FB0C2;--coral:#E8858B}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;background:var(--ink);color:var(--pearl);font-family:Man;-webkit-font-smoothing:antialiased}
+#bg{position:absolute;inset:0}
+.abs{position:absolute;left:0;right:0}
+.ar{font-family:Naskh;direction:rtl}
+.plex{font-family:Plex;direction:rtl}
+.corm{font-family:Corm}
+#top{position:absolute;top:110px;left:90px;display:flex;align-items:center;gap:20px}
+#top img{width:84px;height:84px;border-radius:50%;box-shadow:0 0 0 1px rgba(255,255,255,.25)}
+#top .n{font-weight:600;font-size:24px}#top .t{font-size:17px;opacity:.6;margin-top:3px}
+/* captions */
+#cap{position:absolute;left:80px;right:80px;top:1480px;text-align:center;font-family:Naskh;font-weight:700;font-size:66px;line-height:1.5;direction:rtl;text-shadow:0 4px 24px rgba(0,0,0,.45)}
+#cap span{transition:none}
+/* A search */
+#search{top:640px;margin:0 80px;height:128px;border-radius:64px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;padding:0 48px;gap:26px;backdrop-filter:blur(6px)}
+#search .q{flex:1;font-family:Plex;font-size:44px;direction:rtl;text-align:right;white-space:nowrap;overflow:hidden}
+#caret{display:inline-block;width:3px;height:48px;background:var(--cyan);vertical-align:middle;margin-left:4px}
+.res{left:80px;right:80px;height:150px;border-radius:28px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);display:flex;align-items:center;gap:30px;padding:0 36px}
+.res .av{width:84px;height:84px;border-radius:50%;background:rgba(255,255,255,.12)}
+.res .ln{height:20px;border-radius:10px;background:rgba(255,255,255,.14)}
+/* B timer */
+#timer{top:470px;left:0;right:0;display:flex;flex-direction:column;align-items:center}
+#timer .num{position:absolute;top:150px;font-family:Corm;font-weight:500;font-size:300px;line-height:1}
+#timer .lb{margin-top:40px;font-size:30px;letter-spacing:.04em;color:var(--silver)}
+/* C cards */
+.card{left:80px;right:80px;height:190px;border-radius:32px;background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;padding:0 44px;gap:34px}
+.card .x{width:74px;height:74px;border-radius:50%;border:2px solid var(--coral);display:flex;align-items:center;justify-content:center;flex:none}
+.card .tx{flex:1;text-align:right}
+.card .a{font-family:Naskh;font-weight:700;font-size:50px;direction:rtl}
+.card .e{font-size:25px;color:var(--silver);margin-top:4px}
+/* E brand */
+#brand{top:520px;display:flex;flex-direction:column;align-items:center;text-align:center}
+#brand img{width:380px;height:380px;border-radius:50%}
+#brand .nm{font-family:Corm;font-weight:500;font-size:84px;margin-top:56px;line-height:1}
+#brand .tg{font-size:26px;letter-spacing:.02em;color:var(--silver);margin-top:22px}
+#halo{position:absolute;width:560px;height:560px;border-radius:50%;top:-90px;left:50%;margin-left:-280px;background:radial-gradient(circle,rgba(31,182,211,.35),rgba(31,182,211,0) 65%)}
+/* F services */
+#svh{top:430px;text-align:center;font-family:Corm;font-size:76px;font-weight:500}
+.sv{left:90px;right:90px;display:flex;justify-content:space-between;align-items:baseline;padding:34px 0;border-bottom:1px solid rgba(201,214,226,.2)}
+.sv .e{font-family:Corm;font-weight:500;font-size:50px}
+.sv .a{font-family:Naskh;font-weight:700;font-size:48px;direction:rtl}
+/* G */
+#g{top:640px;text-align:center}
+#g .l1{font-family:Naskh;font-weight:700;font-size:104px;direction:rtl;line-height:1.4}
+#g .l2{font-family:Naskh;font-weight:700;font-size:92px;direction:rtl;color:var(--cyan);line-height:1.4;margin-top:20px}
+#g .en{font-family:Corm;font-style:italic;font-size:50px;color:var(--silver);margin-top:50px}
+/* H CTA */
+#h{top:420px;display:flex;flex-direction:column;align-items:center}
+#h img{width:250px;height:250px;border-radius:50%}
+#h .t1{font-family:Naskh;font-weight:700;font-size:78px;direction:rtl;margin-top:60px}
+#h .t2{font-family:Corm;font-size:52px;color:var(--silver);margin-top:6px}
+#h .wa{margin-top:70px;display:flex;align-items:center;gap:22px;padding:34px 56px;border-radius:999px;background:var(--cyan);color:var(--ink);font-weight:700;font-size:50px}
+#h .row{margin-top:46px;display:flex;flex-direction:column;align-items:center;gap:20px;font-size:36px;color:var(--pearl);opacity:.85}
+#h .row span{display:flex;align-items:center;gap:16px}
+svg.ic{width:40px;height:40px}
+</style></head><body>
+<canvas id="bg" width="1080" height="1920"></canvas>
+<div id="top"><img src="LOGO"><div><div class="n">Aloui Med Digital Bridge</div><div class="t">Bridging healthcare with digital solutions</div></div></div>
+
+<div id="A">
+  <div class="abs" id="search"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#1FB6D3" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><div class="q"><span id="caret"></span><span id="qt"></span></div></div>
+  <div class="abs res" id="r1" style="top:820px"><div class="av"></div><div style="flex:1"><div class="ln" style="width:70%"></div><div class="ln" style="width:45%;margin-top:18px;opacity:.6"></div></div></div>
+  <div class="abs res" id="r2" style="top:1000px"><div class="av"></div><div style="flex:1"><div class="ln" style="width:60%"></div><div class="ln" style="width:38%;margin-top:18px;opacity:.6"></div></div></div>
+  <div class="abs res" id="r3" style="top:1180px"><div class="av"></div><div style="flex:1"><div class="ln" style="width:66%"></div><div class="ln" style="width:42%;margin-top:18px;opacity:.6"></div></div></div>
+</div>
+
+<div id="B" class="abs" style="top:0"><div id="timer" class="abs"><svg width="560" height="560" viewBox="0 0 560 560"><circle cx="280" cy="280" r="250" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="3"/><circle id="ring" cx="280" cy="280" r="250" fill="none" stroke="#1FB6D3" stroke-width="5" stroke-linecap="round" transform="rotate(-90 280 280)" stroke-dasharray="1571" stroke-dashoffset="0"/></svg><div class="num" id="num">3</div><div class="lb">First impression &nbsp; <span class="plex">الانطباع الأول</span></div></div></div>
+
+<div id="C">
+  <div class="abs card" id="c1" style="top:560px"><div class="x"><svg width="30" height="30" viewBox="0 0 24 24" stroke="#E8858B" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg></div><div class="tx"><div class="a">منشورات متوقّفة</div><div class="e">An inactive account</div></div></div>
+  <div class="abs card" id="c2" style="top:790px"><div class="x"><svg width="30" height="30" viewBox="0 0 24 24" stroke="#E8858B" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg></div><div class="tx"><div class="a">صور لا تعكس مستواك</div><div class="e">Visuals below your standard</div></div></div>
+  <div class="abs card" id="c3" style="top:1020px"><div class="x"><svg width="30" height="30" viewBox="0 0 24 24" stroke="#E8858B" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg></div><div class="tx"><div class="a">لا طريقة واضحة للحجز</div><div class="e">No clear way to book</div></div></div>
+</div>
+
+<svg id="ecg" class="abs" style="top:1160px" width="1080" height="300" viewBox="0 0 1080 300"><path id="ecgp" fill="none" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+
+<div id="E" class="abs"><div id="brand" class="abs"><div id="halo"></div><img src="LOGO" style="position:relative"><div class="nm">Aloui Med Digital Bridge</div><div class="tg">Bridging healthcare with digital solutions</div></div></div>
+
+<div id="F">
+  <div class="abs" id="svh">What we do<div class="plex" style="font-size:40px;color:#9FB0C2;margin-top:10px;text-align:center">ماذا نقدّم</div></div>
+  <div class="abs sv" id="s1" style="top:720px"><div class="e">Content</div><div class="a">المحتوى</div></div>
+  <div class="abs sv" id="s2" style="top:880px"><div class="e">Social media</div><div class="a">إدارة الحسابات</div></div>
+  <div class="abs sv" id="s3" style="top:1040px"><div class="e">Reputation</div><div class="a">السمعة الرقمية</div></div>
+  <div class="abs sv" id="s4" style="top:1200px"><div class="e">Websites</div><div class="a">الموقع الإلكتروني</div></div>
+</div>
+
+<div id="G" class="abs"><div id="g" class="abs"><div class="l1" id="g1">ركّز على مرضاك</div><div class="l2" id="g2">ونحن نهتمّ بالباقي</div><div class="en" id="g3">You focus on your patients. We handle the rest.</div></div></div>
+
+<div id="H" class="abs"><div id="h" class="abs"><img src="LOGO"><div class="t1">راسلنا على واتساب</div><div class="t2">Message us on WhatsApp</div>
+<div class="wa" id="wa"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#06182E" stroke-width="1.8" style="width:52px;height:52px"><path d="M4 20l1.2-3.6A8 8 0 1 1 8 19z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 .8c-1-.4-2.3-1.7-2.7-2.7l.8-1-1-2z" fill="#06182E" stroke="none"/></svg>+216 94 871 811</div>
+<div class="row" id="hr"><span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#1FB6D3" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>amdb.agency@yahoo.com</span><span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#1FB6D3" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#1FB6D3"/></svg>@amdb_agency</span></div></div></div>
+
+<div id="cap"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const p=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+// window visibility: fade in over d starting at a, fade out ending at b
+const win=(t,a,b,d=.45)=>eo(p(t,a,a+d))*(1-eio(p(t,b-d,b)));
+function show(el,o,dy=0,sc=1){el.style.opacity=o;el.style.transform=`translateY(${dy}px) scale(${sc})`;el.style.visibility=o<=0.001?'hidden':'visible'}
+
+const CAPS=[
+ [0.1,2.45,[["قبلَ",0.1],["أن",0.4],["يحجزَ",0.5],["المريضُ",1.1],["موعدَه،",1.6]]],
+ [2.5,4.45,[["يبحثُ",2.5],["عنكَ",2.9],["على",3.2],["الإنترنت.",3.4]]],
+ [4.5,6.05,[["وفي",4.5],["ثوانٍ",4.8],["قليلة،",5.4]]],
+ [6.1,8.7,[["يقرّرُ",6.1],["إن",7.1],["كان",7.3],["سيثقُ",7.7],["بك.",8.2]]],
+ [9.3,10.95,[["منشوراتٌ",9.3],["متوقّفة،",10.0]]],
+ [11.0,13.5,[["صورٌ",11.0],["لا",11.6],["تعكسُ",11.9],["مستواك،",12.4]]],
+ [13.6,16.0,[["ولا",13.6],["طريقةَ",13.8],["واضحةً",14.5],["للحجز.",15.1]]],
+ [16.2,18.9,[["كلُّ",16.2],["هذا",16.7],["يُبعدُ",17.3],["عنكَ",18.0],["المرضى.",18.3]]],
+ [21.6,25.5,[["نبني",21.7],["لكَ",22.2],["حضورًا",22.5],["رقميًّا",23.2],["يليقُ",24.0],["بخبرتك.",24.6]]],
+];
+const QUERY="أفضل طبيب جلدية قريب مني";
+
+// background canvas
+const cv=$('bg'),cx=cv.getContext('2d');
+function drawBg(t){
+  const g=cx.createRadialGradient(820+60*Math.sin(t*.25),300+40*Math.cos(t*.2),50,700,700,1500);
+  g.addColorStop(0,'#123A6B');g.addColorStop(.45,'#0A2346');g.addColorStop(1,'#06182E');
+  cx.fillStyle=g;cx.fillRect(0,0,1080,1920);
+  // slow bridge arcs
+  cx.lineWidth=1.5;
+  for(let k=0;k<2;k++){
+    const y0=1820+k*60, amp=330-k*80, ph=t*.15+k;
+    const gr=cx.createLinearGradient(0,0,1080,0);
+    gr.addColorStop(0,'rgba(31,182,211,0)');gr.addColorStop(.5,`rgba(31,182,211,${k?0.18:0.35})`);gr.addColorStop(1,'rgba(31,182,211,0)');
+    cx.strokeStyle=gr;cx.beginPath();cx.moveTo(-100,y0);cx.quadraticCurveTo(540+40*Math.sin(ph),y0-amp*2,1180,y0);cx.stroke();
+  }
+  // drifting particles
+  for(let i=0;i<34;i++){
+    const sx=(i*197.3)%1080, sy=(i*331.7)%1920;
+    const y=(sy - t*(12+i%5*4))%1920; const yy=y<0?y+1920:y;
+    const a=.08+.12*((i*7)%5)/5;
+    cx.fillStyle=`rgba(159,200,226,${a})`;cx.beginPath();cx.arc(sx+10*Math.sin(t*.3+i),yy,1.6+(i%3),0,7);cx.fill();
+  }
+}
+
+function ecgPath(t,flatAt,restartAt){
+  // moving ECG: beats every 1.1s scrolling left; flattening between flatAt and restartAt
+  let d='';const W=1080,base=150;
+  for(let x=0;x<=W;x+=6){
+    const tt=t - (W-x)/700; // time at this x
+    let y=0;
+    const flat = tt>flatAt && tt<restartAt;
+    if(!flat){
+      const ph=((tt%1.1)+1.1)%1.1;
+      if(ph>.30&&ph<.36) y=-(ph-.30)/.06*40;
+      else if(ph>=.36&&ph<.42) y=-40+(ph-.36)/.06*170;
+      else if(ph>=.42&&ph<.48) y=130-(ph-.42)/.06*230;
+      else if(ph>=.48&&ph<.54) y=-100+(ph-.48)/.06*100;
+      else if(ph>.7&&ph<.85) y=-18*Math.sin((ph-.7)/.15*Math.PI);
+    }
+    d+=(x?'L':'M')+x+' '+(base+y);
+  }
+  return d;
+}
+
+function setTime(t){
+  drawBg(t);
+  // top brand bar visible except in E and H
+  show($('top'), 1-Math.max(win(t,19.0,26.0,.5), eo(p(t,36.2,36.8))));
+  // A
+  const A=win(t,0,4.55,.4);
+  show($('search'),A,(1-eo(p(t,0,.6)))*40);
+  const n=Math.floor(cl(p(t,.25,2.2))*QUERY.length);
+  $('qt').textContent=QUERY.slice(0,n);
+  $('caret').style.opacity=(Math.floor(t*2.5)%2||n<QUERY.length)?1:0;
+  ['r1','r2','r3'].forEach((id,i)=>{const a=2.5+i*.25;show($(id),eo(p(t,a,a+.45))*A,(1-eo(p(t,a,a+.5)))*50)});
+  // B
+  const B=win(t,4.55,9.05,.4); show($('B'),B,0,.96+.04*eo(p(t,4.55,5.2)));
+  const bp=cl(p(t,4.9,8.4)); $('ring').setAttribute('stroke-dashoffset',1571*bp);
+  $('num').textContent= bp<1/3?'3':bp<2/3?'2':'1';
+  // C cards
+  [[9.3,'c1'],[11.0,'c2'],[13.6,'c3']].forEach(([a,id])=>{
+    const o=eo(p(t,a-.1,a+.4))*(1-eio(p(t,17.2,17.9)));
+    const dim=1-.45*eo(p(t,16.2,16.9));
+    show($(id),o*dim,0,1); $(id).style.transform=`translateX(${(1-eo(p(t,a-.1,a+.5)))*160}px) translateY(${eo(p(t,16.2,17.9))*-40}px)`;
+  });
+  // ECG: D and E start
+  const E1=win(t,16.6,20.1,.6);
+  show($('ecg'),E1); $('ecgp').setAttribute('d',ecgPath(t,17.6,19.15));
+  $('ecgp').setAttribute('stroke', t<19.1?`rgba(201,214,226,${.9-.5*p(t,17.6,18.6)})`:'#1FB6D3');
+  // E brand
+  const E=win(t,19.5,25.75,.6);
+  show($('E'),E,(1-eo(p(t,19.5,20.3)))*30,.92+.08*eo(p(t,19.5,20.4)));
+  $('halo').style.opacity=.6+.4*Math.sin(t*2.2);
+  // F
+  const F=win(t,25.75,31.95,.4); show($('svh'),F,(1-eo(p(t,25.75,26.3)))*30);
+  [[26.0,'s1'],[26.9,'s2'],[28.4,'s3'],[29.9,'s4']].forEach(([a,id])=>show($(id),eo(p(t,a-.1,a+.35))*F,(1-eo(p(t,a-.1,a+.45)))*40));
+  // G
+  const G=win(t,31.95,36.3,.4);
+  show($('g1'),eo(p(t,32.0,32.5))*G,(1-eo(p(t,32,32.6)))*40);
+  show($('g2'),eo(p(t,34.1,34.6))*G,(1-eo(p(t,34.1,34.7)))*40);
+  show($('g3'),eo(p(t,34.8,35.4))*G);
+  // H
+  const H=eo(p(t,36.3,36.9)); show($('H'),H,(1-H)*40);
+  show($('wa'),eo(p(t,36.9,37.4)),0,.9+.1*eo(p(t,36.9,37.5))+.015*Math.sin(Math.max(0,t-37.5)*4));
+  show($('hr'),eo(p(t,37.5,38.0)));
+  // captions
+  let html='',co=0;
+  for(const [a,b,ws] of CAPS){ if(t>=a-.05&&t<b){ co=eo(p(t,a-.05,a+.15))*(1-p(t,b-.12,b));
+      html=ws.map(([w,ts],i)=>{const nx=i+1<ws.length?ws[i+1][1]:b;const on=t>=ts;const cur=t>=ts&&t<nx;
+        return `<span style="color:${cur?'#1FB6D3':on?'#EEF3F6':'rgba(238,243,246,.4)'}">${w}</span>`}).join(' ');
+      break; } }
+  $('cap').innerHTML=html; $('cap').style.opacity=co;
+}
+window.setTime=setTime; setTime(0);
+</script></body></html>
