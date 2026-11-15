@@ -12,7 +12,7 @@ Instagram @amdb_agency, Facebook page, LinkedIn company account "Aloui Med Digit
 - 1 carousel (5 slides; on LinkedIn as one PDF document with documentTitle)
 - 1 reel (1080x1920, ~30-40 s, Arabic voice-over, Instagram REEL with isAiGenerated true, Facebook REEL, LinkedIn video)
 - 1 single image
-Best times from Metricool data: 10:00 on weekdays; 18:00 for reels.
+Best times from Metricool data: Instagram/Facebook 10:00 on weekdays (Friday 10:00 strongest), 18:00 for reels (Tue-Thu); LinkedIn peaks at 11:00 (Thu/Fri strongest), so LinkedIn posts go at 11:00 rather than the Instagram time.
 
 ## Languages and voice
 - Official languages: Arabic and English. Instagram: English then Arabic, separated by a line with a single ".", 6-8 hashtags. Facebook: Arabic first, short English summary, 2 hashtags. LinkedIn: English, longer and professional, company voice ("we"), 3 hashtags.
@@ -30,10 +30,20 @@ Best times from Metricool data: 10:00 on weekdays; 18:00 for reels.
 ## Reel (toolkit/reel)
 - reel.html is a time-driven page (setTime(t)); render_reel.py renders stills for checking, then scene files, then concat. music.py makes a soft pad bed.
 - Voice: Speko audio.synthesize, ElevenLabs voice Ywuz3KyW2N5pqKNpwcCL, model eleven_v3_conversational, language ar, Modern Standard Arabic with diacritics on ambiguous words. Synthesize the whole script in one call, then transcribe it back twice (audio.transcribe, word_timestamps) and re-generate if a word is wrong. Brand name spoken as "ألوي ميد ديجيتال بريدج". Captions word-synced from the timestamps.
-- Mix: voice loudnorm -15 LUFS, music -30 LUFS.
+- Mix: voice loudnorm -15 LUFS, music -30 LUFS, generated SFX (rayen-reel-editor make_sfx.py: pop, tick, whoosh, typing, ping) at about 0.5 gain on each reveal.
+- Fallback when ElevenLabs is blocked (Speko asks for a $5 top-up before ElevenLabs; ElevenLabs free plan can be busy): Speko munsit voice ar-msa-male-2 (Hassan, MSA). It added a vowel before the first word in week 2; check the first 0.5 s on a spectrogram and trim at the stop closure.
+- Safe zone: captions bottom edge above y=1440, nothing important in the right 230 px below y=500 (Instagram buttons). Run rayen-reel-editor qc.py on the render and read the safe-zone sheet.
+- toolkit/reel2 is the week 2 version (review card scene, step header, typed reply, word-synced captions).
 
 ## Hosting media
 Push media to github.com/ghanem10/amdb-assets under weekN/, then use https://raw.githubusercontent.com/ghanem10/amdb-assets/main/weekN/<file> as Metricool media URLs (Metricool copies them).
 
+## Design lessons
+- Week 1 was text-only on one template; every post looked the same in the grid. From week 2: one drawn object per post that carries the idea (HTML/SVG in the palette, never stock or AI people), one dominant headline, Arabic given equal weight.
+- Use text-wrap:balance on Arabic paragraphs and explicit <br> on Arabic headlines to avoid orphan words; check every render at full size.
+- Mock UI labels in sentence case (no all-caps), and keep mock content generic and clearly illustrative (no names, no real star ratings presented as genuine).
+- Carousel cover: a fanned stack of the interior mock-ups works as the thumbnail; interior slides share one template (number, title EN/AR, mock-up left, description right).
+
 ## Week log
 - Week 1 (11-14 Nov 2026): first impression post, carousel "three signs", reel "patients search before they book", services post.
+- Week 2 (16-21 Nov 2026): Mon Google Maps profile checklist (image), Wed reel "bad review, don't delete it" (reputation), Fri carousel "three posts that build trust before the first visit", Sat bilingual "speak to every patient in their language". Week 1 data: carousel had the most IG views; LinkedIn video had the most impressions (38). Reel voice: munsit Hassan (ElevenLabs unavailable).
