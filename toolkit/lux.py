@@ -72,7 +72,7 @@ def header(page=""):
             f'<div class="tg">Bridging healthcare with digital solutions</div></div>{pg}</div>')
 
 FOOTER = (f'<div class="ft"><span>{ICON["mail"]}amdb.agency@yahoo.com</span>'
-          f'<span>{ICON["wa"]}+216 94 871 811</span><span>{ICON["ig"]}@amdb_agency</span></div>')
+          f'<span>{ICON["wa"]}+216 93 871 805</span><span>{ICON["ig"]}@amdb_agency</span></div>')
 
 def page(cls, inner):
     return f"<div class='s {cls} grain'>{inner}</div>"
